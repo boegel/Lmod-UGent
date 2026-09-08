@@ -95,7 +95,7 @@ local function startup_hook(usrCmdRaw)
     dbg.print{"Received raw usrCmd: ", usrCmdRaw, "\n"}
     -- only keep last part of usrCmd value, since some Lmod versions include debug info and spaces in it,
     -- see https://github.com/TACC/Lmod/issues/857
-    local usrCmd = usrCmdRaw:match("%S+$")
+    local usrCmd = type(usrCmdRaw) == "string" and usrCmdRaw:match("%S+$")
 
     dbg.print{"Received usrCmd: ", usrCmd, "\n"}
     dbg.print{"masterTbl:", masterTbl, "\n"}
